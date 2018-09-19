@@ -1,0 +1,120 @@
+<app-admin-sidebar></app-admin-sidebar>
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <!-- BEGIN: Subheader -->
+    <div class="m-subheader" appunwraptag="">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="m-subheader__title m-subheader__title--separator">Edit User</h3>
+                <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                    <li class="m-nav__item m-nav__item--home">
+                        <a href="javascript:void(0)" class="m-nav__link m-nav__link--icon"> <i class="m-nav__link-icon la la-home"></i> </a>
+                    </li>
+                    <li class="m-nav__separator">-</li>
+                    <li class="m-nav__item">
+                        <a href="javascript:void(0)" [routerLink]="['/admin/dashboard']" class="m-nav__link"> <span class="m-nav__link-text">Dashboard</span> </a>
+                    </li>
+                    <li class="m-nav__separator">-</li>
+                    <li class="m-nav__item">
+                        <a href="javascript:void(0)" class="m-nav__link"> <span class="m-nav__link-text">Edit User</span> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- END: Subheader -->
+    <div class="m-content" style="min-height:500px;">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="m-portlet m-portlet--full-height m-portlet--tabs">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">Edit User</h3> 
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="m_user_profile_tab_1">
+                      <form class="m-form m-form--fit m-form--label-align-right" [formGroup]="useredit" (ngSubmit)="edituser(useredit.value)" #userEdit="ngForm">
+                          <div class="m-portlet__body">
+                                <div class="form-group m-form__group m--margin-top-10 m--hide">
+                                    <div class="alert m-alert m-alert--default" role="alert"> The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes. </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="example-text-input" class="col-2 col-form-label">Full Name</label>
+                                    <div class="col-7 example-container">
+                                        <mat-form-field>
+                                            <input matInput formControlName="name" placeholder="Enter Name">
+                                            <mat-error *ngIf="useredit.get('name').hasError('required') && useredit.get('name').touched">Please Enter Name</mat-error>
+                                            <mat-error *ngIf="useredit.get('name').hasError('pattern')  && useredit.get('name').touched">Just use alphabet character</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                        
+                                </div>
+                                
+                                <div class="form-group m-form__group row">
+                                  <label for="example-text-input" class="col-2 col-form-label">Email</label>
+                                  <div class="col-7 example-container">
+                                      <mat-form-field>
+                                          <input matInput formControlName="email" placeholder="Enter Email" readonly>
+                                          <mat-error *ngIf="useredit.get('email').hasError('required') && useredit.get('email').touched">Please Enter Email</mat-error>
+                                          <mat-error *ngIf="useredit.get('email').hasError('pattern')  && useredit.get('email').touched">Invalid Email Address</mat-error>
+                                      </mat-form-field>
+                                  </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="example-text-input" class="col-2 col-form-label">Phone Number</label>
+                                    <div class="col-7 example-container">
+                                        <mat-form-field>
+                                            <input type="number" matInput formControlName="phone" placeholder="Enter Phone no">
+                                        </mat-form-field>
+                                    </div>
+                                        
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="example-text-input" class="col-2 col-form-label">About</label>
+                                    <div class="col-7 example-container">
+                                        <mat-form-field>
+                                            <textarea matInput formControlName="about" placeholder="Enter About User"></textarea>
+                                            
+                                            <mat-error *ngIf="useredit.get('about').hasError('required') && useredit.get('about').touched">Please Enter About User</mat-error>
+                                            <mat-error *ngIf="useredit.get('about').hasError('pattern')  && useredit.get('about').touched">Just use alphabet character</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="example-text-input" class="col-2 col-form-label">Service</label>
+                                    <div class="col-7 example-container">
+                                        <mat-form-field>
+                                            <textarea matInput formControlName="service" placeholder="Enter Service"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                        
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label for="example-text-input" class="col-2 col-form-label">Is Active</label>
+                                    <div class="col-7">
+                                        <mat-checkbox [checked]="isChecked" (change)="updateChecked($event)"></mat-checkbox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                <div class="m-form__actions">
+                                    <div class="row">
+                                        <div class="col-2"> </div>
+                                        <div class="col-7">
+                                            <button type="submit" [disabled]="!useredit.valid" class="btn btn-accent m-btn m-btn--air m-btn--custom">Save</button>&nbsp;&nbsp;
+                                            <button type="reset" [routerLink]="['/admin/users']" class="btn btn-secondary m-btn m-btn--air m-btn--custom">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+          </div>
+        </div>  
+      </div>
+      <!--End::Section-->
+    </div>
+  </div>

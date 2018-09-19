@@ -1,0 +1,18 @@
+table {
+    width: 100%;
+}
+.m-portlet .m-portlet__body{
+    padding: 0px 0px !important;
+}
+/* .mat-column-actions, .mat-column-status{
+    text-align: center;
+} */
+.mat-column-actions{
+    text-align: center;
+}
+.template-search{
+    padding-left: 6px;
+}
+.m-badge.m-badge--info, .m-badge.m-badge--danger {
+    padding: 2px 9px 0 9px;
+}
