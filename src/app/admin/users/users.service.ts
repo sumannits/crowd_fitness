@@ -7,8 +7,7 @@ import * as firebase from 'firebase';
 @Injectable()
 export class UsersService {
   constructor(
-    //private apiService: ApiService,
-    //private db: AngularFirestore,
+    
   ) {}
   //Get All User List
   getUserList(){
@@ -16,15 +15,6 @@ export class UsersService {
     return userDb.once('value').then(function(snapshot) {
       return snapshot.val();
     });
-  //  this.db.collection('users', ref => {
-  //     return ref;
-  //   }).snapshotChanges().map(actions => {
-  //     return actions.map(action => {
-  //       const data = action.payload.doc.data();
-  //       const id = action.payload.doc.id;
-  //       return { id, ...data };
-  //     });
-  //   });
 
     // return firebase.database().ref('users/').on('child_added', (snapshot) => {
     //   //console.log(snapshot.val());
